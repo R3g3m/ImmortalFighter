@@ -11,15 +11,14 @@
         loadExtension:true,
         tag:'gameCanvas', 
  
-        engineDir:'./cocos2dhtml5/cocos2d/',
+        engineDir:'./HTML5/cocos2d/',
         appFiles:[
             './src/resource.js',
             './src/animations.js',
-            './src/player.js',
             './src/MainLayer.js',
-            //'./src/main.js',
-            //'./src/gamelogic.js',
-            './src/mainMenu.js'
+            './src/player.js',
+            './src/main.js'
+            
         ]
     };
  

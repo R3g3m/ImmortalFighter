@@ -33,7 +33,8 @@ var Player = cc.Sprite.extend({
 		this._hits.lkick = false;
 		this._hits.hkick = false;
 		
-		this.addAnimation('stay', stayRect, 0.2);
+		//this.addAnimation('stay', stayRect, 0.2);
+		/*
 		this.addAnimation('walkback', walkBackRect, 0.2);
 		this.addAnimation('walkforward', walkForwardRect, 0.2);
 		this.addAnimation('duck', duckingRect, 0.1);
@@ -44,7 +45,7 @@ var Player = cc.Sprite.extend({
 		this.addAnimation('hkick', highKickRect, 0.15);
 		this.addAnimation('lkick', lowKickRect, 0.1);
 		this.addAnimation('hdownpunch', hdownPunchRect, 0.14);
-		this.addAnimation('ldownpunch', ldownPunchRect, 0.12);
+		this.addAnimation('ldownpunch', ldownPunchRect, 0.12); 
 		this.addAnimation('hdownkick', hdownPunchRect, 0.14);
 		this.addAnimation('ldownkick', hdownPunchRect, 0.12);
 
@@ -67,6 +68,7 @@ var Player = cc.Sprite.extend({
 		this._forever.setTag(1);
 		this._curentAction = new cc.Action();
 		this.runAnimation('stay', 0);
+		*/
 	},
 
 	addAnimation: function(name, framesRect, delay, loop) {
@@ -79,11 +81,12 @@ var Player = cc.Sprite.extend({
             
         }
        
-        var animation =  cc.Animation.create(animFrames, delay);
-        var animate =  cc.Animate.create(animation); 
+        //var animation =  cc.Animation.create(animFrames, delay);
+        //var animation = cc.Animation.create(animFrames, delay);
+		//var animate =  cc.Animate.create(animation); 
 
-        this._animations[name] = animate; 
-        this._animations[name].setTarget(this);     
+       // this._animations[name] = animate; 
+       // this._animations[name].setTarget(this);     
       
 	},
 
@@ -226,7 +229,7 @@ var Player = cc.Sprite.extend({
 				this._isAnimated = false;
 			} 		
 		}
-		this.animationLogic(dt);
+		//this.animationLogic(dt);
  		if( (this._isMoveBack && this.dir == 0) || (this._isMoveForward && this.dir == 1) )  {
             this.x -= this._walkSpeed*dt;
         } else if ( (this._isMoveForward && this.dir == 0) || (this._isMoveBack && this.dir == 1) ) {
