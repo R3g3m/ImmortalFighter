@@ -91,13 +91,21 @@ var Player = cc.Sprite.extend({
 	},
 
 	runAnimation: function (name) {		
-		if(name == 'stay') {
+		if(name == 'stay') 
+		{
 			if(this.numberOfRunningActions() == 0)
+			{
 				this._curentAction = this.runAction(this._forever);
-		} else {
+			}
+		}
+		else
+		{
 			if(this.numberOfRunningActions() == 0)
+			{
 				this._curentAction = this.runAction(this._animations[name]);
-			else {
+			}
+			else
+			{
 				this.getActionManager().removeAction(this._forever);
 				this._curentAction = this.runAction(this._animations[name]);
 			}
@@ -109,47 +117,57 @@ var Player = cc.Sprite.extend({
 		this._isAnimated = false;
 	},
 
+	// переписать это используя State Machine
     animationLogic: function (dt) {
     	if(this._isMoveBack) {	
-    		if(!this._isAnimated) {
+    		if(!this._isAnimated)
+			{
     			this.runAnimation('walkback', 1);	
     			this._isAnimated = true;
     		}
     				
     	}
-    	if(this._isMoveForward) {
-    		if(!this._isAnimated) {
+    	if(this._isMoveForward)
+		{
+    		if(!this._isAnimated)
+			{
     			this.runAnimation('walkforward', 1);	
     			this._isAnimated = true;
     		}		
     	}
-		if(!this._isMoveForward && !this._isMoveBack) {
+		if(!this._isMoveForward && !this._isMoveBack)
+		{
     		var f = false;
-    		if( ( f = (!this._animations['walkforward'].isDone()) ) || !this._animations['walkback'].isDone()) {
+    		if( ( f = (!this._animations['walkforward'].isDone()) ) ||
+				!this._animations['walkback'].isDone()) 
+			{
 				this._isAnimated = false;
 				if(f)
-			
+				{
 					this.stopAction(this._animations['walkforward']);
-				else {
+				}
+				else 
+				{
 					this.stopAction(this._animations['walkfback']);
-
 				}
     			this.runAnimation('stay', 0);
     		}
     			
-    		if(this._isAnimated) {
+    		if(this._isAnimated) 
+			{
     			this.getActionManager().removeAction(this._curentAction);
-
     			this._isAnimated = false;
     		} 
     		this.runAnimation('stay', 0);
     	}   
 
-    	if(this._isDucking) {
+    	if(this._isDucking)
+		{
     		this.getActionManager().removeAction(this._forever);
     		this.runAnimation('duck');
 
-    		if(this._animations['duck'].isDone()) {
+    		if(this._animations['duck'].isDone()) 
+			{
     			this.stopAction(this._animations['duck']);
     		}
     	}

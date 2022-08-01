@@ -74,6 +74,9 @@ var MainLayer = cc.LayerColor.extend({
 	    this.locationTapped(location);
 	},
 
+	// переписать управление через установку state Playera
+	// тут смешан контроллер и модель
+	// от дубляжа кода тоже надо избавиться
 	onKeyDown: function (event) {
 		switch(event) {
 			//controls for 1 player
@@ -262,6 +265,8 @@ var MainLayer = cc.LayerColor.extend({
 		}
 	},
 
+	// TODO: сделать отдельный класс для hp
+	// и для интерфейса тоже
 	hpupdate: function(dt) {
 		
 	},
