@@ -1,26 +1,20 @@
 var text1 = cc.TextureCache.getInstance().addImage(sh_ryu);
 var text2 = cc.TextureCache.getInstance().addImage(sh_ken); 
 
-var stayRect = [];
-var width = 50;
-var height = 100;
-var x = 0;
-var y = 0;
-for(var i=0; i<4; i++) {
-    stayRect[i] = cc.rect(x, y, width, height);
-    x += width;
-}
+// очень много дубляжа, сделать один метод для установки текстуры
+function makeTexture(width, height, x, y, numberOfFrames) {
+    var textureRect = [];
 
-var walkForwardRect = [];
-var width = 50;
-var height = 100;
-var x = 200;
-var y = 0;
+    for(var i=0; i < numberOfFrames; i++) {
+        textureRect[i] = cc.rect(x, y, width, height);
+        x += width;
+    }
 
-for(var i=0; i<4; i++) {
-    walkForwardRect[i] = cc.rect(x, y, width, height);
-    x += width;
-}
+    return textureRect;
+} 
+
+var stayRect = makeTexture(50, 100, 0, 0, 4);
+var walkForwardRect = makeTexture(50, 100, 200, 0, 4);
 
 var walkBackRect = [];
 var width = 50;

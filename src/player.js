@@ -80,13 +80,14 @@ var Player = cc.Sprite.extend({
             animFrames.push(spriteFrame);
             
         }
-       
+
+		anim.initWithAnimationFrames(framesRect, delay, loop)
         //var animation =  cc.Animation.create(animFrames, delay);
         //var animation = cc.Animation.create(animFrames, delay);
 		//var animate =  cc.Animate.create(animation); 
 
-       // this._animations[name] = animate; 
-       // this._animations[name].setTarget(this);     
+       	this._animations[name] = anim; 
+       	this._animations[name].setTarget(this);     
       
 	},
 
