@@ -36,7 +36,7 @@ blockingRect[0] = cc.rect(1210, 0, 50, 100);
 var blockingdownRect = [];
 blockingdownRect[0] = cc.rect(1260, 30, 50, 70);
 
-var jumpingRect = [];
+var jumpingRect = [];   
 jumpingRect[0] = cc.rect(450, 0, 45, 100);
 jumpingRect[1] = cc.rect(495, 0, 45, 100);
 jumpingRect[2] = cc.rect(540, 0, 37, 100);
