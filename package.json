@@ -1,0 +1,28 @@
+{
+  "name": "immortalfighter",
+  "version": "1.0.0",
+  "description": "Browser game",
+  "main": "main.js",
+  "dependencies": {
+    "express": "^4.13.4",
+    "socket.io": "^4.5.4",
+    "socket.io-stream": "^0.5.3"
+  },
+  "devDependencies": {
+    "jest": "^29.4.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/R3g3m/ImmortalFighter.git"
+  },
+  "author": "Alexander Tsaregorodtsev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/R3g3m/ImmortalFighter/issues"
+  },
+  "homepage": "https://github.com/R3g3m/ImmortalFighter#readme"
+}

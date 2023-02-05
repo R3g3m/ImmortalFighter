@@ -20,6 +20,7 @@
             './src/main.js'
             
         ]
+        
     };
  
     window.addEventListener('DOMContentLoaded', function () {

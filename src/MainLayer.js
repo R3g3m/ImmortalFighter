@@ -57,6 +57,7 @@ var MainLayer = cc.LayerColor.extend({
        	this.addChild(this._label1);
        	this.addChild(this._label2);
 
+		//this._player1.addAnimation("stay", );
         this.scheduleUpdate();
         this._player2.reverse();
     },
@@ -74,6 +75,7 @@ var MainLayer = cc.LayerColor.extend({
 	    this.locationTapped(location);
 	},
 
+	// TODO: вынести в отдельный класс
 	// переписать управление через установку state Playera
 	// тут смешан контроллер и модель
 	// от дубляжа кода тоже надо избавиться
@@ -225,7 +227,8 @@ var MainLayer = cc.LayerColor.extend({
 					}
 					break;
 			}
-		} else if (!pl1hit && pl2hit) {
+		} 
+		else if (!pl1hit && pl2hit) {
 			var hit_x;
 			var hited;
 			switch (pl2hit) {

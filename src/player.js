@@ -33,7 +33,7 @@ var Player = cc.Sprite.extend({
 		this._hits.lkick = false;
 		this._hits.hkick = false;
 		
-		//this.addAnimation('stay', stayRect, 0.2);
+		this.addAnimation('stay', stayRect, 0.2, true);
 		/*
 		this.addAnimation('walkback', walkBackRect, 0.2);
 		this.addAnimation('walkforward', walkForwardRect, 0.2);
@@ -72,23 +72,36 @@ var Player = cc.Sprite.extend({
 	},
 
 	addAnimation: function(name, framesRect, delay, loop) {
-		var animFrames = [];
 
+		var spriteFrames = [];
+		for(var j in framesRect) {
+            var spriteFrame = cc.SpriteFrame.createWithTexture(this.texture, framesRect[j]);
+		}
+		var animationClip = cc.AnimationClip.createWithSpriteFrames(spriteFrames, 30);
+
+		// не работает
+		/*
+		var animFrames = [];
         var anim = new cc.Animation();
+
         for(var j in framesRect) {
             var spriteFrame = cc.SpriteFrame.createWithTexture(this.texture, framesRect[j]);
-            animFrames.push(spriteFrame);
-            
+            var animFrame = new cc.AnimationFrame();
+			animFrame.initWithSpriteFrame(spriteFrame, delay, null);
+			
+			//animFrames.push(spriteFrame);
+            animFrames.push(animFrame);
         }
 
-		anim.initWithAnimationFrames(framesRect, delay, loop)
-        //var animation =  cc.Animation.create(animFrames, delay);
+		//anim.initWithAnimationFrames(framesRect, delay, loop)
+        anim.initWithSpriteFrames(animFrames, delay, loop);
+		//var animation =  cc.Animation.create(animFrames, delay);
         //var animation = cc.Animation.create(animFrames, delay);
-		//var animate =  cc.Animate.create(animation); 
+		var animate =  cc.Animate.create(anim); 
 
-       	this._animations[name] = anim; 
+       	this._animations[name] = animate; 
        	this._animations[name].setTarget(this);     
-      
+		*/
 	},
 
 	runAnimation: function (name) {		
@@ -181,7 +194,8 @@ var Player = cc.Sprite.extend({
 						this.getActionManager().removeAction(this._forever);
 						if(this._isDucking) {
 							this.runAnimation('hdownpunch');
-						}else {
+						}
+						else {
 							this.runAnimation('hpunch');
 						}
 						this._isAnimated = true;
@@ -191,7 +205,8 @@ var Player = cc.Sprite.extend({
 						this.getActionManager().removeAction(this._forever);
 						if(this._isDucking) {
 							this.runAnimation('ldownpunch');
-						}else {
+						}
+						else {
 							this.runAnimation('lpunch');
 						}
 						this._isAnimated = true;
@@ -201,7 +216,8 @@ var Player = cc.Sprite.extend({
 						this.getActionManager().removeAction(this._forever);
 						if(this._isDucking) {
 							this.runAnimation('hdownkick');
-						}else {
+						}
+						else {
 							this.runAnimation('hkick');
 						}
 						this._isAnimated = true;
@@ -211,7 +227,8 @@ var Player = cc.Sprite.extend({
 						this.getActionManager().removeAction(this._forever);
 						if(this._isDucking) {
 							this.runAnimation('ldownkick');
-						}else {
+						}
+						else {
 							this.runAnimation('lkick'); 
 						}
 						this._isAnimated = true;
@@ -251,7 +268,8 @@ var Player = cc.Sprite.extend({
 		//this.animationLogic(dt);
  		if( (this._isMoveBack && this.dir == 0) || (this._isMoveForward && this.dir == 1) )  {
             this.x -= this._walkSpeed*dt;
-        } else if ( (this._isMoveForward && this.dir == 0) || (this._isMoveBack && this.dir == 1) ) {
+        }
+		else if ( (this._isMoveForward && this.dir == 0) || (this._isMoveBack && this.dir == 1) ) {
             this.x += this._walkSpeed*dt;
         }
         else {
